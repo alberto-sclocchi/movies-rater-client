@@ -1,38 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .App {
   text-align: center;
+  background-color: whitesmoke;
+  height: 100vh;
+  font-family: 'Bebas Neue';
+  letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (prefers-reduced-motion: reduce) {
+  *{
+    animation: none !important;
+    transition: none !important
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#navbar{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-link{
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  transition: background-size 0.8s ease-out, color 1s ease-out;
+  font-size: 1.4rem;
+  background-repeat: no-repeat;
+  width: 10vw;
+  border-radius: 50px;
+  background: linear-gradient(90deg, rgb(251, 75, 16));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-link:hover, 
+.navbar-link-active{
+  color: whitesmoke;
+  background-size: 100% 100%;
 }
