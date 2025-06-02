@@ -31,7 +31,7 @@
   padding: 10px;
   cursor: pointer;
   color: black;
-  transition: background-size 0.8s ease-out, color 1s ease-out;
+  transition: background-size 0.5s ease-out, color 1s ease-out;
   font-size: 1.4rem;
   background-repeat: no-repeat;
   width: 10vw;
@@ -45,4 +45,61 @@
 .navbar-link-active{
   color: whitesmoke;
   background-size: 100% 100%;
+}
+
+.movies-dashboard{
+  width: 100vw;
+  margin: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar{
+  width: 75vw;
+  height: 3vw;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  flex-wrap: nowrap;
+  border: 2px solid  rgb(251, 75, 16);
+  margin: 2vw 0
+}
+
+.search-bar img{
+  height: 100%;
+  width: auto;
+  display: block;
+  opacity: 0.8;
+  transition: 0.5s ease-out
+}
+
+.search-bar button {
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5vw 1.5vw;
+  background-color:  rgb(251, 75, 16);
+  /* border-radius: 10px; */
+  border-radius: 5px;
+}
+
+.search-bar button:hover img{
+  opacity: 1;
+  transform: scale(1.1);
+}
+.search-bar input{
+  height: 95%;;
+  width: 89.2%;
+  background: none;
+  border: none;
+  padding: 0vw 1.5vw;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", sans-serif;
 }
