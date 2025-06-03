@@ -6,22 +6,20 @@ const service = new SearchMoviesService();
 
 export const MoviesProvider = ({ children }) => {
 
-    const [searchQuery, setSearchQuery] = useState("");
     const [searchedMovies, setSearchedMovies] = useState([]);
 
 
-    const searchMovies = async (query) =>{
-        const resultAPI = await service.searchMovies(query);
+    const searchMovies = async (searchQuery) =>{
+        const resultAPI = await service.searchMovies({title : searchQuery});
        
         if (resultAPI) {
             setSearchedMovies(resultAPI);
+            // console.log("Searched Movies: ", searchedMovies);
         }
-
-        console.log("Searched Movies: ", searchedMovies);
     }
     
 	return (
-		<MoviesContext.Provider value={{searchQuery, setSearchQuery, searchedMovies, searchMovies}}>
+		<MoviesContext.Provider value={{searchedMovies, searchMovies}}>
 			{children}
 		</MoviesContext.Provider>
 	);

@@ -5,7 +5,7 @@ export default class MoviesSearchService {
         let service = axios.create({
             baseURL: "https://streaming-availability.p.rapidapi.com",
             headers: {
-                'x-rapidapi-key': process.env.RAPID_API_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_RAPID_API_KEY,
                 'x-rapidapi-host': 'streaming-availability.p.rapidapi.com'
             }
         })
