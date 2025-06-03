@@ -57,6 +57,16 @@
   align-items: center;
   justify-content: start;
 }
+
+#search-section{
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  position: relative;
+}
+
 .search-bar{
   width: 100%;
   height: 3vw;
@@ -104,7 +114,7 @@
 
 .searched-movie{
   width: 15vw;
-  max-height: 20vw;
+  height: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,14 +130,6 @@
   border-radius: 10px;
 }
 
-#search-section{
-  width: 75vw;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  position: relative;
-}
 
 .searched-movies {
   background-color: whitesmoke;

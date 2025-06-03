@@ -9,14 +9,14 @@ export default function SearchMoviesBar() {
   const { searchMovies, searchedMovies, renderSearchedMovies } = useContext(MoviesContext);
 
   const handleChange = (event) => {
-    setSearchQuery(event.target.value);
-    console.log("Search Query: ", searchQuery);
+    // setSearchQuery(event.target.value);
+    // console.log("Search Query: ", searchQuery);
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
-    searchMovies(searchQuery);
+    // searchMovies(searchQuery);
   }
 
   const handleClick = () => {
@@ -29,7 +29,8 @@ export default function SearchMoviesBar() {
           <button type="submit"><img src={magnifyingGlass} alt="magnifying-glass" /></button>
       </form>
       <div className={`searched-movies ${!!showSearchResults ? "searched-movies-active" : ""}`}>
-          {!!searchedMovies && searchedMovies.length ? renderSearchedMovies() : <h3>NO MOVIES</h3>}
+          {/* {!!searchedMovies && searchedMovies.length ? renderSearchedMovies() : <h3>NO MOVIES</h3>} */}
+          {renderSearchedMovies()/*replaced for testing purposes*/}
       </div>
     </div>
   )
