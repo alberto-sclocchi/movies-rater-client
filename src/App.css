@@ -58,16 +58,15 @@
   justify-content: start;
 }
 .search-bar{
-  width: 75vw;
+  width: 100%;
   height: 3vw;
-  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: right;
   flex-wrap: nowrap;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin: 3vw 0
+  margin-top: 3vw;
 }
 
 .search-bar img{
@@ -87,8 +86,6 @@
   align-items: center;
   padding: 0.5vw 1.5vw;
   background-color:  rgb(251, 75, 16);
-  /* border-radius: 10px; */
-  border-radius: 5px;
 }
 
 .search-bar button:hover img{
@@ -101,13 +98,13 @@
   background: none;
   border: none;
   padding: 0vw 1.5vw;
-  border-radius: 10px;
   font-size: 1.3rem;
   font-family: "Bebas Neue", sans-serif;
 }
 
 .searched-movie{
-  width: 20vw;
+  width: 15vw;
+  max-height: 20vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,17 +116,42 @@
 
 .searched-movie img{
   width: 80%;
-  height: 21vw;
+  max-height: 15.5vw;
   border-radius: 10px;
 }
 
-.searched-movies{
-  width: 100%;
+#search-section{
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  position: relative;
+}
+
+.searched-movies {
+  background-color: whitesmoke;
+  position: absolute;
+  z-index: 10000;
+  top: 100%;
+  width: 93.30%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 5vw;
-  padding: 3vw 0;
+  gap: 1.5vw 4vw;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  overflow-y: scroll;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.searched-movies-active {
+  max-height: 50vh; 
+  opacity: 1;
+  padding: 3vw 0; 
 }

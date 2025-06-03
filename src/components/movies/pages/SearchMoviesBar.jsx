@@ -5,7 +5,8 @@ import MoviesContext from '../context/MoviesContext.context';
 export default function SearchMoviesBar() {
 
   const [searchQuery, setSearchQuery] = useState("");
-  const { searchMovies } = useContext(MoviesContext);
+  const [ showSearchResults, setShowSearchResults ] = useState(false);
+  const { searchMovies, searchedMovies, renderSearchedMovies } = useContext(MoviesContext);
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
@@ -18,10 +19,18 @@ export default function SearchMoviesBar() {
     searchMovies(searchQuery);
   }
 
+  const handleClick = () => {
+    setShowSearchResults(!showSearchResults);
+  }
   return (
-    <form className='search-bar' onSubmit={handleSubmit}>
-        <input className="search-input" type="text" placeholder="Search for movies..." onChange={handleChange}/>
-        <button type="submit"><img src={magnifyingGlass} alt="magnifying-glass" /></button>
-    </form>
+    <div id="search-section">
+      <form className='search-bar' onSubmit={handleSubmit} onFocus={handleClick} onBlur={handleClick}>
+          <input className="search-input" type="text" placeholder="Search for movies..." onChange={handleChange}/>
+          <button type="submit"><img src={magnifyingGlass} alt="magnifying-glass" /></button>
+      </form>
+      <div className={`searched-movies ${!!showSearchResults ? "searched-movies-active" : ""}`}>
+          {!!searchedMovies && searchedMovies.length ? renderSearchedMovies() : <h3>NO MOVIES</h3>}
+      </div>
+    </div>
   )
 }
