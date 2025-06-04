@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function SearchedMovieBox(props) {
   
-  const {id, title, releaseYear, overview, cast, renderType} = props.movie;
+  const {id, title, releaseYear, overview, cast, renderType, directors} = props.movie;
   const { addedMovies, unaddMovie } = useContext(MoviesContext);
 
   const isAlreadyAdded = addedMovies.some((movie) => movie.movieId === id);
@@ -25,7 +25,7 @@ export default function SearchedMovieBox(props) {
             isAlreadyAdded
             ? <p>Already Added</p>
             : renderType === RenderType.searchedMovie 
-            ? <button onClick={() => addMovie({movieId: id, title, releaseYear, verticalPoster: props.movie.imageSet.verticalPoster.w720, overview, cast})} className='plus-button'>+</button> 
+            ? <button onClick={() => addMovie({movieId: id, title, releaseYear, verticalPoster: props.movie.imageSet.verticalPoster.w720, overview, cast, directors})} className='plus-button'>+</button> 
             : renderType === RenderType.addedMovie 
             ? <button onClick={() => unaddMovie(props.movie._id)} className={'minus-button'}>-</button>
             : <p>?</p>

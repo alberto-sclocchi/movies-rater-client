@@ -81,7 +81,7 @@ export const MoviesProvider = ({ children }) => {
         //   </div>   
         
         //replaced for testing purposes (do not waste API calls)
-        return MoviesArray.map((movie) => (
+        return searchedMovies.map((movie) => (
         <SearchedMovieBox movie={{...movie, renderType}} key={movie.id} />
         ));    
       }
