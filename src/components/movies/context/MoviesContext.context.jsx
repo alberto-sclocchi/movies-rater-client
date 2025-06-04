@@ -1,24 +1,45 @@
 import { createContext, useState } from "react";
 import SearchMoviesService from "../service/MoviesSearchService";
 import {MoviesArray} from "../models/Movies.model.js"
+import MoviesService from "../service/MoviesService.js";
+import SearchedMovieBox from "../pages/SearchedMovieBox.jsx";
 
 const MoviesContext = createContext({});
-const service = new SearchMoviesService();
-
+const searchService = new SearchMoviesService();
+const movieService = new MoviesService();
 
 export const MoviesProvider = ({ children }) => {
 
     const [searchedMovies, setSearchedMovies] = useState([]);
-
+    const [addedMovies, setAddedMovies] = useState([]);
 
     const searchMovies = async (searchQuery) =>{
-        const resultAPI = await service.searchMovies({title : searchQuery});
+        const resultAPI = await searchService.searchMovies({title : searchQuery});
        
         if (resultAPI) {
             setSearchedMovies(resultAPI);
             // console.log("Searched Movies: ", searchedMovies);
         }
     }
+
+    const getMovies = async () => {
+        const resultAPI =  await movieService.getMovies();
+
+        if (resultAPI.success){
+            setAddedMovies(resultAPI.result);
+            // console.log("Added Movies: ", addedMovies);
+        }
+    }
+
+     const addMovie = async (movie) => {
+        const resultAPI =  await movieService.addMovie(movie);
+
+        if (resultAPI.success){
+            setAddedMovies((prevState) => [...prevState, resultAPI.result]);
+            // console.log("Added Movies: ", addedMovies);
+        }
+    }
+
 
     const renderSearchedMovies = () => {
     // return searchedMovies.map((movie, key) => (
@@ -28,16 +49,13 @@ export const MoviesProvider = ({ children }) => {
     //   </div>   
     
     //replaced for testing purposes (do not waste API calls)
-      return MoviesArray.map((movie, id) => (
-      <div key={id} className='searched-movie'>
-        <h2>{movie.title} ({movie.releaseYear})</h2>
-        <img src={movie.imageSet.verticalPoster.w720} alt={`${movie.title} poster`} />
-      </div>   
-    ));
+      return MoviesArray.map((movie) => (
+       <SearchedMovieBox {...movie} key={movie.id} />
+      ));
   }
     
 	return (
-		<MoviesContext.Provider value={{searchedMovies, searchMovies, renderSearchedMovies}}>
+		<MoviesContext.Provider value={{searchedMovies, searchMovies, renderSearchedMovies, getMovies, addedMovies, addMovie}}>
 			{children}
 		</MoviesContext.Provider>
 	);
