@@ -5,11 +5,16 @@ import { RenderType } from '../models/RenderType.model.js';
 export default function SearchedMovieBox(props) {
   
   const {id, title, releaseYear, overview, cast, renderType} = props.movie;
-  const { addedMovies } = useContext(MoviesContext);
+  const { addedMovies, unaddMovie } = useContext(MoviesContext);
 
-  //  console.log({...props.movie});
   const isAlreadyAdded = addedMovies.some((movie) => movie.movieId === id);
   const { addMovie } = useContext(MoviesContext);
+  
+  //  console.log({...props.movie});
+  if (renderType === RenderType.addedMovie){
+    console.log("Added ID: ", props.movie._id);
+    console.log("Added MovieID: ", props.movie.movieId);
+  }
 
   return (
      <div className='searched-movie'>
@@ -19,7 +24,7 @@ export default function SearchedMovieBox(props) {
           : renderType === RenderType.searchedMovie 
           ? <button onClick={() => addMovie({movieId: id, title, releaseYear, verticalPoster: props.movie.imageSet.verticalPoster.w720, overview, cast})}>+</button> 
           : renderType === RenderType.addedMovie 
-          ? <button>-</button>
+          ? <button onClick={() => unaddMovie(props.movie._id)}>-</button>
           : <p>?</p>
         }
 

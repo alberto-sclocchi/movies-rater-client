@@ -32,7 +32,7 @@ export const MoviesProvider = ({ children }) => {
         }
     }
 
-     const addMovie = async (movie) => {
+    const addMovie = async (movie) => {
         const resultAPI =  await movieService.addMovie(movie);
 
         if (resultAPI.success){
@@ -41,36 +41,47 @@ export const MoviesProvider = ({ children }) => {
         }
     }
 
-   const renderMovies = (renderType) => {
-    if (renderType === RenderType.addedMovie) {
-      // return searchedMovies.map((movie, key) => (
-      //   <div key={key} className='searched-movie'>
-      //     <h2>{movie.title} ({movie.releaseYear})</h2>
-      //     <img src={movie.imageSet.verticalPoster.w720} alt={`${movie.title} poster`} />
-      //   </div>   
-    
-      //replaced for testing purposes (do not waste API calls)
-      return addedMovies.map((movie) => (
-       <SearchedMovieBox movie={{...movie, renderType}} key={movie.id} />
-      ));
+    const unaddMovie = async (id) => {
+        const resultAPI =  await movieService.unaddMovie(id);  
+        if (resultAPI.success){ 
+            setAddedMovies((prevState) => prevState.filter((movie) => movie._id !== id));
+            // console.log("Added Movies: ", addedMovies);
+        }
+    }           
+
+
+
+    const renderMovies = (renderType) => {
+      if (renderType === RenderType.addedMovie) {
+        // return searchedMovies.map((movie, key) => (
+        //   <div key={key} className='searched-movie'>
+        //     <h2>{movie.title} ({movie.releaseYear})</h2>
+        //     <img src={movie.imageSet.verticalPoster.w720} alt={`${movie.title} poster`} />
+        //   </div>   
+        
+        //replaced for testing purposes (do not waste API calls)
+        return addedMovies.map((movie) => (
+        <SearchedMovieBox movie={{...movie, renderType}} key={movie.movieId} />
+        ));
+      }
+      else if (renderType === RenderType.searchedMovie) {
+        // return searchedMovies.map((movie, key) => (
+        //   <div key={key} className='searched-movie'>
+        //     <h2>{movie.title} ({movie.releaseYear})</h2>
+        //     <img src={movie.imageSet.verticalPoster.w720} alt={`${movie.title} poster`} />
+        //   </div>   
+        
+        //replaced for testing purposes (do not waste API calls)
+        return MoviesArray.map((movie) => (
+        <SearchedMovieBox movie={{...movie, renderType}} key={movie.id} />
+        ));    
+      }
     }
-    else if (renderType === RenderType.searchedMovie) {
-      // return searchedMovies.map((movie, key) => (
-      //   <div key={key} className='searched-movie'>
-      //     <h2>{movie.title} ({movie.releaseYear})</h2>
-      //     <img src={movie.imageSet.verticalPoster.w720} alt={`${movie.title} poster`} />
-      //   </div>   
-    
-      //replaced for testing purposes (do not waste API calls)
-      return MoviesArray.map((movie) => (
-       <SearchedMovieBox movie={{...movie, renderType}} key={movie.id} />
-      ));    
-    }
-    
-  }
+
+
     
 	return (
-		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies}}>
+		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies, unaddMovie}}>
 			{children}
 		</MoviesContext.Provider>
 	);

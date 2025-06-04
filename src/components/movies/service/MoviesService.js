@@ -22,4 +22,12 @@ export default class MoviesService {
             return resp.data;
         })
     }
+
+    unaddMovie (id){
+        return this.service.delete(`/${id}`).then((resp) => {
+            // console.log("id:", id);
+            console.log(resp.data);
+            return resp.data;
+        })
+    }
 }
