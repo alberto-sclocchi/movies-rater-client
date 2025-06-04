@@ -23,9 +23,16 @@ export default class MoviesService {
         })
     }
 
-    unaddMovie (id){
+    unaddMovie(id){
         return this.service.delete(`/${id}`).then((resp) => {
             // console.log("id:", id);
+            console.log(resp.data);
+            return resp.data;
+        })
+    }
+
+    getMovie(id){
+        return this.service.get(`/${id}`).then((resp) => {
             console.log(resp.data);
             return resp.data;
         })

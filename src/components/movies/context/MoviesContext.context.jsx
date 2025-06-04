@@ -13,6 +13,7 @@ export const MoviesProvider = ({ children }) => {
 
     const [searchedMovies, setSearchedMovies] = useState([]);
     const [addedMovies, setAddedMovies] = useState([]);
+    const [movie, setMovie] = useState(null)
 
     const searchMovies = async (searchQuery) =>{
         const resultAPI = await searchService.searchMovies({title : searchQuery});
@@ -47,7 +48,15 @@ export const MoviesProvider = ({ children }) => {
             setAddedMovies((prevState) => prevState.filter((movie) => movie._id !== id));
             // console.log("Added Movies: ", addedMovies);
         }
-    }           
+    }   
+    
+    const getMovie = async (id) => {
+        const resultAPI =  await movieService.getMovie(id);
+        if (resultAPI.success){
+            setMovie(resultAPI.result);
+            console.log("Movie Details: ", resultAPI.result);
+        }
+    }
 
 
 
@@ -81,7 +90,7 @@ export const MoviesProvider = ({ children }) => {
 
     
 	return (
-		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies, unaddMovie}}>
+		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies, unaddMovie, getMovie, movie}}>
 			{children}
 		</MoviesContext.Provider>
 	);
