@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import magnifyingGlass from '../../images/MagGlassIcon.png'
 import MoviesContext from './context/MoviesContext.context';
+import { RenderType } from './models/RenderType.model'; 
 
 export default function SearchMoviesBar() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [ showSearchResults, setShowSearchResults ] = useState(false);
-  const { searchMovies, searchedMovies, renderSearchedMovies } = useContext(MoviesContext);
+  const { searchedMovies, renderMovies } = useContext(MoviesContext);
   const inputRef = React.useRef(null);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function SearchMoviesBar() {
       </form>
       <div className={`searched-movies ${!!showSearchResults ? "searched-movies-active" : ""}`}>
           {/* {!!searchedMovies && searchedMovies.length ? renderSearchedMovies() : <h3>NO MOVIES</h3>} */}
-          {renderSearchedMovies()/*replaced for testing purposes*/}
+          {renderMovies(RenderType.searchedMovie)/*replaced for testing purposes*/}
       </div>
     </div>
   )
