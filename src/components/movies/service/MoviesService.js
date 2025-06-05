@@ -37,4 +37,11 @@ export default class MoviesService {
             return resp.data;
         })
     }
+
+    updateRating(id, rating){
+        return this.service.patch(`/${id}`, rating).then((resp) => {
+            console.log(resp.data);
+            return resp.data;
+        })
+    }
 }

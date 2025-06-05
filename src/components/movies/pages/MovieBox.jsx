@@ -1,15 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import MoviesContext from '../context/MoviesContext.context';
 import { RenderType } from '../models/RenderType.model.js'; 
 import { Link } from 'react-router-dom';
 
 export default function SearchedMovieBox(props) {
   
-  const {id, title, releaseYear, overview, cast, renderType, directors} = props.movie;
+  const {id, title, releaseYear, overview, cast, renderType, directors, index} = props.movie;
   const { addedMovies, unaddMovie } = useContext(MoviesContext);
 
   const isAlreadyAdded = addedMovies.some((movie) => movie.movieId === id);
-  const { addMovie } = useContext(MoviesContext);
+  const { addMovie, updateRating } = useContext(MoviesContext);
+
+  const [showRatingInput, setShowRatingInput] = useState(false);
+  const [newRating, setNewRating] = useState();
+
+  const handleChange = (event) => {
+    setNewRating(event.target.value);
+    console.log("New Rating: ", event.target.value, newRating);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    updateRating(props.movie._id, newRating);
+    
+    setTimeout(() => setShowRatingInput(false), 10);
+  } 
   
   //  console.log({...props.movie});
   // if (renderType === RenderType.addedMovie){
@@ -21,6 +36,7 @@ export default function SearchedMovieBox(props) {
      <div className='searched-movie'>
         <div className='movie-box-buttons'>
           {renderType === RenderType.addedMovie  && <Link to={`/movie/${props.movie._id}`} className='movie-details-link'>i</Link>}
+          {renderType === RenderType.addedMovie  && <span>{index + 1}</span>}
           {
             isAlreadyAdded
             ? <p>Already Added</p>
@@ -34,6 +50,20 @@ export default function SearchedMovieBox(props) {
 
         <h2>{title} ({releaseYear})</h2>
         {renderType === RenderType.searchedMovie ? <img src={props.movie.imageSet.verticalPoster.w720} alt={`${title} poster`} /> : <img src={props.movie.verticalPoster} alt={`${title} poster`} />}
+        {
+          renderType === RenderType.addedMovie && 
+          <div className='movie-box-rating'>
+            <div onClick={() => setShowRatingInput(true)}>
+              {!!showRatingInput ? 
+                <form onSubmit={handleSubmit}>
+                  <input className="rating-input" type="number" max={10} min={0} value={newRating} onChange={handleChange}/> 
+                  <button type="submit" style={{display: "none"}} tabIndex={-1}></button>
+                </form>
+                : <span>{props.movie.rating} </span>
+              }
+            </div>/10
+          </div>
+        }
     </div>
   )
 }

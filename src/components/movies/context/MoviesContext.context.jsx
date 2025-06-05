@@ -58,6 +58,13 @@ export const MoviesProvider = ({ children }) => {
         }
     }
 
+    const updateRating = async (id, rating) => {
+        const resultAPI =  await movieService.updateRating(id, {rating});
+        if (resultAPI.success){
+            getMovies();
+        }
+    }
+
 
 
     const renderMovies = (renderType) => {
@@ -69,8 +76,8 @@ export const MoviesProvider = ({ children }) => {
         //   </div>   
         
         //replaced for testing purposes (do not waste API calls)
-        return addedMovies.map((movie) => (
-        <SearchedMovieBox movie={{...movie, renderType}} key={movie.movieId} />
+        return addedMovies.map((movie, index) => (
+        <SearchedMovieBox movie={{...movie, renderType, index}} key={movie.movieId} />
         ));
       }
       else if (renderType === RenderType.searchedMovie) {
@@ -81,8 +88,8 @@ export const MoviesProvider = ({ children }) => {
         //   </div>   
         
         //replaced for testing purposes (do not waste API calls)
-        return searchedMovies.map((movie) => (
-        <SearchedMovieBox movie={{...movie, renderType}} key={movie.id} />
+        return searchedMovies.map((movie, index) => (
+        <SearchedMovieBox movie={{...movie, renderType, index}} key={movie.id} />
         ));    
       }
     }
@@ -90,7 +97,7 @@ export const MoviesProvider = ({ children }) => {
 
     
 	return (
-		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies, unaddMovie, getMovie, movie}}>
+		<MoviesContext.Provider value={{searchedMovies, searchMovies, getMovies, addedMovies, addMovie, renderMovies, unaddMovie, getMovie, movie, updateRating}}>
 			{children}
 		</MoviesContext.Provider>
 	);

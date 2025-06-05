@@ -38,7 +38,7 @@ export default function SearchMoviesBar() {
   return (
     <div id="search-section" onSubmit={handleSubmit} ref={inputRef}>
       <form className='search-bar'>
-          <input className="search-input" type="text" placeholder="Search for movies..." onChange={handleChange} onFocus={handleFocus}/>
+          <input className="search-input" type="text" placeholder="Search for movies..." value={searchQuery} onChange={handleChange} onFocus={handleFocus}/>
           <button type="submit"><img src={magnifyingGlass} alt="magnifying-glass" /></button>
       </form>
       <div className={`searched-movies ${!!showSearchResults ? "searched-movies-active" : ""}`}>
