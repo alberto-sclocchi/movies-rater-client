@@ -119,7 +119,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3vw 2vw;
+  padding: 4vw 2vw;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -207,4 +207,114 @@
 
 .minus-button{
   background-color: red;
+}
+
+#movie-details-info-page{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 2.5vw 0
+}
+
+#movie-details-info-page h1{
+  font-size: 1.75rem;
+  color: whitesmoke;
+  box-shadow: 0px 0px 7px rgb(251, 75, 16);
+  background-color: rgb(251, 75, 16);
+  padding: 1vw 2vw; 
+  border-radius: 10px;
+}
+
+.movie-details-info-container{
+  width: 80vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.movie-details-info-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.movie-details-info-box img{
+  width: 20vw;
+  max-height: 30vw;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(251, 75, 16);
+  animation: fadeInImg 1s ease-out;
+}
+
+@keyframes fadeInImg {
+  from {
+    opacity: 0;
+    scale: 1.15;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+
+.movie-details-info-box > div{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-details-info-box-lists{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  column-gap: 6vw;
+}
+
+.movie-details-info-box-lists > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+}
+
+.movie-details-info-box-lists ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.movie-details-info-box h3{
+  font-size: 1.4rem;
+  margin-bottom: 1vw;
+  border-bottom: 3px solid rgb(251, 75, 16);
+}
+
+.movie-details-info-box p,
+.movie-details-info-box li{
+  animation: fadeInWriting 2.5s ease-out;
+}
+
+@keyframes fadeInWriting {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

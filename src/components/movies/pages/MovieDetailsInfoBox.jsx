@@ -14,20 +14,34 @@ export default function MovieDetailsInfoBox() {
   return (
     <div id='movie-details-info-page'>
         {!!movie &&
-         <div className='movie-details-info-box'>
+         <div className='movie-details-info-container'>
             <h1>{movie.title} ({movie.releaseYear})</h1>
-            <div>
+            <div className='movie-details-info-box'>
                 <img src={movie.verticalPoster} alt={`${movie.title} poster`} />
-            </div>
 
-            <div>
-                <p>{movie.overview}</p>
-                <h3>Cast:</h3>
-                <ul>
-                    {movie.cast && movie.cast.map((actor, index) => (
-                        <li key={index}>{actor}</li>
-                    ))}
-                </ul>
+                <div>
+                    <h3>Overview</h3>
+                    <p>{movie.overview}</p>
+                    <div className="movie-details-info-box-lists">
+                        <div>
+                            <h3>Cast</h3>
+                            <ul>
+                                {movie.cast && movie.cast.map((actor, index) => (
+                                    <li key={index}>{actor}</li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3>Directors</h3>
+                            <ul>
+                                {movie.directors && movie.directors.map((director, index) => (
+                                    <li key={index}>{director}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
          </div>
         }
