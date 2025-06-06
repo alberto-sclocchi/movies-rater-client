@@ -203,7 +203,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 30%;
+  gap: 20%;
 }
 
 .movie-details-link,
@@ -344,4 +344,18 @@
   100% {
     opacity: 1;
   }
+}
+
+.index-span{
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 3vw;
+  height: 3vw;
+  line-height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1 / 1;  
 }

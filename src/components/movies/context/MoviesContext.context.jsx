@@ -76,7 +76,11 @@ export const MoviesProvider = ({ children }) => {
         //   </div>   
         
         //replaced for testing purposes (do not waste API calls)
-        return addedMovies.map((movie, index) => (
+        
+        // Sort addedMovies by rating in ascending order
+        const sortedAddedMovies = [...addedMovies].sort((a, b) => b.rating -  a.rating );
+
+        return sortedAddedMovies.map((movie, index) => (
         <SearchedMovieBox movie={{...movie, renderType, index}} key={movie.movieId} />
         ));
       }
