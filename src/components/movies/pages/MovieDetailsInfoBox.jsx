@@ -20,8 +20,8 @@ export default function MovieDetailsInfoBox() {
                 <img src={movie.verticalPoster} alt={`${movie.title} poster`} />
 
                 <div>
-                    <h3>Overview</h3>
-                    <p>{movie.overview}</p>
+                    {!!movie.overview && <h3>Overview</h3>}
+                    {!!movie.overview && <p>{movie.overview}</p>}
                     <div className="movie-details-info-box-lists">
                         <div>
                             <h3>Cast</h3>

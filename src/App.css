@@ -114,18 +114,23 @@
 
 .searched-movie{
   width: 15vw;
-  max-height: auto;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 2vw 2.2vw;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.added-movie{
+  width: 20vw;
+  min-height: 32vw;
+}
+
 .searched-movie img{
-  width: 80%;
+  width: auto;
   max-height: 15.5vw;
   border-radius: 10px;
 }
@@ -274,6 +279,7 @@
   justify-content: space-around;
   align-items: center;
   font-size: 1.2rem;
+  width: 100%;
 }
 
 .movie-details-info-box img{

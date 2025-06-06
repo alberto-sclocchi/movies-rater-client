@@ -33,7 +33,7 @@ export default function SearchedMovieBox(props) {
   // }
 
   return (
-     <div className='searched-movie'>
+     <div className={renderType === RenderType.addedMovie ? 'searched-movie added-movie' : 'searched-movie'}>
         <div className='movie-box-buttons'>
           {renderType === RenderType.addedMovie  && <Link to={`/movie/${props.movie._id}`} className='movie-details-link'>i</Link>}
           {renderType === RenderType.addedMovie  && <span className="index-span" style={{backgroundColor : index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "#cd7f32" : "rgb(251, 75, 16)"}}>{index + 1}</span>}
@@ -56,7 +56,7 @@ export default function SearchedMovieBox(props) {
             <div onClick={() => setShowRatingInput(true)}>
               {!!showRatingInput ? 
                 <form onSubmit={handleSubmit}>
-                  <input className="rating-input" type="number" max={10} min={0} value={newRating} onChange={handleChange}/> 
+                  <input className="rating-input" type="number" max={10} min={0} step={0.1} value={newRating} onChange={handleChange}/> 
                   <button type="submit" style={{display: "none"}} tabIndex={-1}></button>
                 </form>
                 : <span>{props.movie.rating} </span>
