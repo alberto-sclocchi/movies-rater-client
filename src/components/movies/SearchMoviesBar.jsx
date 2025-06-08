@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import magnifyingGlass from '../../images/MagGlassIcon.png'
 import MoviesContext from './context/MoviesContext.context';
 import { RenderType } from './models/RenderType.model'; 
+import LoadingSpinner from '../core/LoadingSpinner';
 
 export default function SearchMoviesBar() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [ showSearchResults, setShowSearchResults ] = useState(false);
-  const { searchMovies, searchedMovies, renderMovies } = useContext(MoviesContext);
+  const { searchMovies, searchedMovies, renderMovies, movieApiLoading } = useContext(MoviesContext);
   const inputRef = React.useRef(null);
 
   useEffect(() => {
@@ -42,7 +43,13 @@ export default function SearchMoviesBar() {
           <button type="submit"><img src={magnifyingGlass} alt="magnifying-glass" /></button>
       </form>
       <div className={`searched-movies ${!!showSearchResults ? "searched-movies-active" : ""}`}>
-          {!!searchedMovies && searchedMovies.length ? renderMovies(RenderType.searchedMovie) : <h3>NO MOVIES</h3>}
+          {
+            !!searchedMovies && searchedMovies.length 
+            ? renderMovies(RenderType.searchedMovie) 
+            : movieApiLoading 
+            ? <LoadingSpinner />
+            : <h3>NO MOVIES</h3>
+          }
           {/* {renderMovies(RenderType.searchedMovie)/*replaced for testing purposes*/} 
       </div>
     </div>

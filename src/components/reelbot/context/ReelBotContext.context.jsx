@@ -7,25 +7,33 @@ const reelBotService = new ReelBotService();
 export const ReelBotProvider = ({ children }) => {
 
     const [botResponse, setBotResponse] = useState("");
+    const [ reelBotLoading, setReelBotLoading ] = useState(false);
 
     const askReelBot = async (error, prompt) => {
 
+        setReelBotLoading(true);
+
         if (!!error){
             setBotResponse(prompt);
+            setReelBotLoading(false)
             return;
         }
 
-        const resultAPI = await reelBotService.getReelBotResponse(prompt);
-        
-        if (resultAPI) {
-            setBotResponse(resultAPI);
-        } else {
-            setBotResponse("Sorry, I couldn't understand your additional information.");
+        try{
+            const resultAPI = await reelBotService.getReelBotResponse(prompt);
+            if (resultAPI) {
+                setBotResponse(resultAPI);
+            } 
+        } catch (err){
+            console.error("ReelBot request failed:", err);
+            setBotResponse("Sorry, I couldn't process your request. Please try again later.");
+        } finally{
+            setReelBotLoading(false);
         }
     } 
 
     return (
-        <ReelBotContext.Provider value={{botResponse, askReelBot}}>
+        <ReelBotContext.Provider value={{botResponse, askReelBot, reelBotLoading, setBotResponse}}>
             {children}
         </ReelBotContext.Provider>
     );

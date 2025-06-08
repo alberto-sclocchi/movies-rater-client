@@ -7,13 +7,36 @@ import Markdown from 'react-markdown';
 
 export default function ReelBotPage() {
   const [ input, setInput ] = useState("");
-  const { botResponse, askReelBot } = useContext(ReelBotContext);
+  const { botResponse, askReelBot, reelBotLoading, setBotResponse} = useContext(ReelBotContext);
   const { addedMovies, getMovies } = useContext(MoviesContext);
+  const [ displayText, setDisplayText ] = useState("");
   
   useEffect(( ) => {
     getMovies();
-    console.log("Added Movies in order: ", addedMovies);
+    // console.log("Added Movies in order: ", addedMovies);
   }, [])
+
+
+  useEffect(() => {
+    if(!reelBotLoading && botResponse) {
+        setDisplayText("");
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < botResponse.length) {
+                setDisplayText(prevText => prevText + botResponse.charAt(index));
+                index++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 10);
+
+        return () => {
+            clearInterval(interval)
+            setDisplayText(""); 
+            setBotResponse("");
+        };
+    }
+  }, [botResponse, reelBotLoading]);
 
   const handleChange = (event) => {
     setInput(event.target.value);
@@ -49,9 +72,9 @@ export default function ReelBotPage() {
      <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Ask ReelBot...' onChange={handleChange} value={input}/>
         <div className='reelbot-response'>
-            <p><Markdown>{botResponse}</Markdown></p>
+            <div><Markdown>{!reelBotLoading ? displayText : "ReelBot is thinking..."}</Markdown></div>
         </div>
-        <button>Start Suggestion</button>
+        <button disabled={reelBotLoading}>{reelBotLoading ? "Fetching Result" : "Start Suggestion"}</button>
      </form>
     </div>
   )
