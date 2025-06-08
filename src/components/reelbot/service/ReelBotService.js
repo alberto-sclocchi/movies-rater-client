@@ -12,11 +12,11 @@ export default class ReelBotService {
 
     getReelBotResponse(prompt) {
         return this.client.chat.completions.create({
-            model: "o4-mini",
+            model: "gpt-4o",
             messages: [{ role: "user", content: prompt }],
             max_completion_tokens: 500,
         }).then((resp) => {
-            console.log(resp.choices[0].message.content);
+            console.log("ReelBot Response: ", resp.choices[0].message);
             return resp.choices[0].message.content;
         }).catch((err) => {
             console.error("Error fetching ReelBot response:", err);

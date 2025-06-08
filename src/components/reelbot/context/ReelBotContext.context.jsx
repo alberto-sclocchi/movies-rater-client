@@ -8,14 +8,19 @@ export const ReelBotProvider = ({ children }) => {
 
     const [botResponse, setBotResponse] = useState("");
 
-    const askReelBot = async (question) => {
-        const resultAPI = await reelBotService.getReelBotResponse(question);
+    const askReelBot = async (error, prompt) => {
+
+        if (!!error){
+            setBotResponse(prompt);
+            return;
+        }
+
+        const resultAPI = await reelBotService.getReelBotResponse(prompt);
         
         if (resultAPI) {
             setBotResponse(resultAPI);
-            console.log("ReelBot Response: ", resultAPI);
         } else {
-            setBotResponse("Sorry, I couldn't understand your question.");
+            setBotResponse("Sorry, I couldn't understand your additional information.");
         }
     } 
 

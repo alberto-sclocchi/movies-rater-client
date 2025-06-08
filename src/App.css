@@ -414,7 +414,7 @@
   font-family: "Bebas Neue", sans-serif;
 }
 
-#reelbot-page form div{
+.reelbot-response{
   width: 100%;
   height: 50%;
   display: flex;
@@ -423,8 +423,11 @@
   justify-content: left;
   background-color: white;
   padding: 0vw 1.5vw;
+  text-align: left;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
 }
+
 
 #reelbot-page form button{
   border: none;

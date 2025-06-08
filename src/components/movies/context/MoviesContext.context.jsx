@@ -28,7 +28,8 @@ export const MoviesProvider = ({ children }) => {
         const resultAPI =  await movieService.getMovies();
 
         if (resultAPI.success){
-            setAddedMovies(resultAPI.result);
+            const sortedAddedMovies = resultAPI.result.sort((a, b) => b.rating -  a.rating );
+            setAddedMovies(sortedAddedMovies);
             // console.log("Added Movies: ", addedMovies);
         }
     }
@@ -77,10 +78,7 @@ export const MoviesProvider = ({ children }) => {
         
         //replaced for testing purposes (do not waste API calls)
         
-        // Sort addedMovies by rating in ascending order
-        const sortedAddedMovies = [...addedMovies].sort((a, b) => b.rating -  a.rating );
-
-        return sortedAddedMovies.map((movie, index) => (
+        return addedMovies.map((movie, index) => (
         <SearchedMovieBox movie={{...movie, renderType, index}} key={movie.movieId} />
         ));
       }
