@@ -365,3 +365,85 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   aspect-ratio: 1 / 1;  
 }
+
+#reelbot-page{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+#reelbot-page img{
+  width: 3.5vw;
+  height: auto;
+}
+
+#reelbot-page h1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#reelbot-page form{
+  width: 75vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 2vw;
+  margin-top: 2vw;
+}
+
+#reelbot-page form input{
+  width: 100%;
+  height: 3vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  flex-wrap: nowrap;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 3vw;
+  border: none;
+  padding: 0vw 1.5vw;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+#reelbot-page form div{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: left;
+  background-color: white;
+  padding: 0vw 1.5vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#reelbot-page form button{
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75vw 3vw;
+  background-color: rgb(251, 75, 16);
+  font-size: 1.4rem;
+  border-radius: 50px;
+  color: whitesmoke;
+  transition: border 0.1s ease, color 0.3s ease, background-color 0.3s ease;
+  font-family: 'Bebas Neue';
+}
+
+#reelbot-page form button:hover{
+  border: 2px solid rgb(251, 75, 16);
+  color: rgb(251, 75, 16);
+  background-color: whitesmoke;
+}
