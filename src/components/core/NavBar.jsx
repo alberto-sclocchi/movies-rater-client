@@ -12,6 +12,8 @@ export default function NavBar() {
         <div>
           <Link to="/dashboard" className={`navbar-link ${activeIndex === 1  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(1)}>Movies</Link>
           <Link to="/reelbot" className={`navbar-link ${activeIndex === 2  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(2)}>ReelBot</Link>
+          <Link to="/login" className={`navbar-link ${activeIndex === 3  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(3)}>Log in</Link>
+          <Link to="/signup" className={`navbar-link ${activeIndex === 4 ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(4)}>Sign up</Link>
         </div>
     </nav>
   )
