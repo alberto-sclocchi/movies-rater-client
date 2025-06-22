@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from './context/AuthContext.context'
+import { Link } from 'react-router-dom';
 
 export default function LogInPage() {
 
@@ -38,6 +39,7 @@ export default function LogInPage() {
             </div>
             <button>Sign Up</button>
         </form>
+        <p>Don't have an account? <Link to="/signup" style={{color:"rgb(251, 75, 16)", textDecoration: "none"}}>[Sign up here]</Link></p>
     </div>
   )
 }

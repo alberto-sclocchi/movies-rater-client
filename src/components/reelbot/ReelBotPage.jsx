@@ -4,15 +4,18 @@ import ReelBotContext from './context/ReelBotContext.context';
 import MoviesContext from '../movies/context/MoviesContext.context';
 import { RenderType } from '../movies/models/RenderType.model';
 import Markdown from 'react-markdown';
+import AuthContext from '../auth/context/AuthContext.context';
 
 export default function ReelBotPage() {
   const [ input, setInput ] = useState("");
   const { botResponse, askReelBot, reelBotLoading, setBotResponse} = useContext(ReelBotContext);
   const { addedMovies, getMovies } = useContext(MoviesContext);
+  const { isLoggedOut } = useContext(AuthContext);
   const [ displayText, setDisplayText ] = useState("");
   
   useEffect(( ) => {
     getMovies();
+    isLoggedOut();
     // console.log("Added Movies in order: ", addedMovies);
   }, [])
 

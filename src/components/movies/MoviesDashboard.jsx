@@ -7,10 +7,11 @@ import AuthContext from '../auth/context/AuthContext.context';
 export default function MoviesDashboard() {
 
   const { addedMovies, renderMovies, getMovies} = useContext(MoviesContext)
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedOut } = useContext(AuthContext);
 
   useEffect(() => {
     !!user && getMovies(user._id);
+    isLoggedOut();
   }, [user]);
 
 

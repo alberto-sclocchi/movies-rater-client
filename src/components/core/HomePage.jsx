@@ -2,13 +2,16 @@ import React, { useContext, useEffect } from 'react'
 import AuthContext from '../auth/context/AuthContext.context'
 
 export default function HomePage() {
-  const { user } = useContext(AuthContext);
+  const { user, errorMessage, setErrorMessage} = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("User", user);
-  })
+    setErrorMessage((prevState) => !!prevState ? null : prevState);
+  }, [])
   
   return (
-    <div>HomePage</div>
+    <div>
+      <h3>HomePage</h3>
+      {!!errorMessage && errorMessage}
+    </div>
   )
 }

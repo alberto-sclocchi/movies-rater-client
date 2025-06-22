@@ -55,8 +55,21 @@ export const AuthProvider = ({children}) => {
 		}, 50)
     }
 
+    const isLoggedOut = () => {
+        if(!user){
+            navigateTo("/");
+            setTimeout(() => {
+                setErrorMessage("Please log in to continue.");      
+            }, 50) 
+        }
+
+        setTimeout(() => {
+            setErrorMessage(null)
+        }, 7500)
+    }
+
     return(
-        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage, setCurrentUser, logOut}}>
+        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage, setCurrentUser, logOut, isLoggedOut}}>
             {children}
         </AuthContext.Provider>
     )
