@@ -10,7 +10,7 @@ export default function MoviesDashboard() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    getMovies(user._id);
+    !!user && getMovies(user._id);
   }, [user]);
 
 

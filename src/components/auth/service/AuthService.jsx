@@ -28,4 +28,16 @@ export default class AuthService {
         console.log(authToken)
         return this.service.post("/verify", {}, { headers: { Authorization: `Bearer ${authToken}` }}).then((resp) =>  resp.data );
     }
+
+    getCurrentUser(){
+        return this.service.get("/currentUser").then((resp) =>{ 
+            console.log({currentUser: resp.data})
+            return resp.data;
+        });
+    }
+
+    logOut(){
+        return this.service.get("/logout");
+    }
+
 }

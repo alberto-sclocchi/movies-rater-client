@@ -33,8 +33,8 @@ export const AuthProvider = ({children}) => {
 
 		if(userResp.authToken){
 			const decryptedCred = await service.verify(userResp.authToken);
-			console.log("Output Verify:", decryptedCred)
-            setUser(decryptedCred);
+            const currentUser = await service.getCurrentUser();
+            setUser(currentUser);
 			setErrorMessage(null);
 			navigateTo("/");
 		} else{
@@ -42,8 +42,21 @@ export const AuthProvider = ({children}) => {
 		}
 	};
 
+    const setCurrentUser = async () => {
+        const currentUser = await service.getCurrentUser();
+        setUser(currentUser);
+    }
+
+    const logOut = async () => {
+        const logOut = await service.logOut();
+        setUser(null);
+		setTimeout(() => {
+			navigateTo("/");
+		}, 50)
+    }
+
     return(
-        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage}}>
+        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage, setCurrentUser, logOut}}>
             {children}
         </AuthContext.Provider>
     )

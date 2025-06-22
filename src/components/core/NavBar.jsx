@@ -6,7 +6,12 @@ import AuthContext from '../auth/context/AuthContext.context';
 export default function NavBar() {
 
   const [activeIndex, setActiveIndex] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const logOutFun = () => {
+    logOut();
+    setActiveIndex(null);
+  }
 
   return (
     <nav id="navbar">
@@ -15,6 +20,7 @@ export default function NavBar() {
           <div>
             <Link to="/dashboard" className={`navbar-link ${activeIndex === 1  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(1)}>Movies</Link>
             <Link to="/reelbot" className={`navbar-link ${activeIndex === 2  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(2)}>ReelBot</Link>
+            <button type='submit' onClick={() => logOutFun()} id="logout-button">Log Out</button>
           </div>
           :
           <div>
