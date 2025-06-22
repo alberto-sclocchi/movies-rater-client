@@ -3,7 +3,11 @@ import AuthContext from './context/AuthContext.context';
 
 export default function SignUpPage() {
 
-  const { errorMessage, signUp } = useContext(AuthContext);
+  const { errorMessage, signUp, setErrorMessage } = useContext(AuthContext);
+
+  useEffect(() => {
+      setErrorMessage((prevState) => !!prevState ? null : prevState);
+  }, [])
   
   const [ formData, setFormData ] = useState({
     firstName: "",
@@ -63,7 +67,7 @@ export default function SignUpPage() {
             </div>
             <div>
                 <label>Password</label>
-                <input type="text" name="password" value={formData.password} onChange={handleChange}/>
+                <input type="password" name="password" value={formData.password} onChange={handleChange}/>
             </div>
             <button>Sign Up</button>
         </form>

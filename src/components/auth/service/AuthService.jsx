@@ -16,4 +16,16 @@ export default class AuthService {
             return resp.data;
         })
     }
+
+    logIn(credentials){
+        return this.service.post("/login", credentials).then((resp) => {
+            console.log({respLogIn: resp.data});
+            return resp.data;
+        });
+    }
+
+    verify(authToken){
+        console.log(authToken)
+        return this.service.post("/verify", {}, { headers: { Authorization: `Bearer ${authToken}` }}).then((resp) =>  resp.data );
+    }
 }

@@ -20,7 +20,7 @@ export const AuthProvider = ({children}) => {
             setErrorMessage(userResp.message)
         } else {
             setErrorMessage(null);
-            // navigateTo("/login")
+            navigateTo("/login")
         }
 
         setTimeout(() => {
@@ -28,15 +28,22 @@ export const AuthProvider = ({children}) => {
         }, 7500);
     }
 
+    const logIn = async (userData) => {
+		const userResp = await service.logIn(userData);
 
-
-
-
-
-
+		if(userResp.authToken){
+			const decryptedCred = await service.verify(userResp.authToken);
+			console.log("Output Verify:", decryptedCred)
+            setUser(decryptedCred);
+			setErrorMessage(null);
+			navigateTo("/");
+		} else{
+			setErrorMessage(userResp.message);
+		}
+	};
 
     return(
-        <AuthContext.Provider value={{errorMessage, signUp}}>
+        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage}}>
             {children}
         </AuthContext.Provider>
     )

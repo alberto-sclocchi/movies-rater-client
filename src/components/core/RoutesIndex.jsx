@@ -5,11 +5,12 @@ import MovieDetailsInfoBox from '../movies/pages/MovieDetailsInfoBox';
 import ReelBotPage from '../reelbot/ReelBotPage';
 import LogInPage from '../auth/LogInPage';
 import SignUpPage from '../auth/SignUpPage';
+import HomePage from '../core/HomePage'
 
 export default function RoutesIndex() {
   return (
     <Routes>
-        <Route  path="/" element={<h1>Home</h1>} />
+        <Route  path="/" element={<HomePage />} />
         <Route  path="/dashboard" element={<MoviesDashboard />} />
         <Route  path="/movie/:movieId" element={<MovieDetailsInfoBox />} />
         <Route  path="/reelbot" element={<ReelBotPage />} />
