@@ -20,8 +20,12 @@ export const AuthProvider = ({children}) => {
             setErrorMessage(userResp.message)
         } else {
             setErrorMessage(null);
-            navigateTo("/login")
+            // navigateTo("/login")
         }
+
+        setTimeout(() => {
+            setErrorMessage(null)
+        }, 7500);
     }
 
 
@@ -32,8 +36,10 @@ export const AuthProvider = ({children}) => {
 
 
     return(
-        <AuthContext.Provider value={{}}>
+        <AuthContext.Provider value={{errorMessage, signUp}}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+export default AuthContext;
