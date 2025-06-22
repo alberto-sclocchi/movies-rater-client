@@ -37,8 +37,8 @@ export const MoviesProvider = ({ children }) => {
         
     }
 
-    const getMovies = async () => {
-        const resultAPI =  await movieService.getMovies();
+    const getMovies = async (userId) => {
+        const resultAPI =  await movieService.getMovies(userId);
 
         if (resultAPI.success){
             const sortedAddedMovies = resultAPI.result.sort((a, b) => b.rating -  a.rating );
@@ -72,10 +72,10 @@ export const MoviesProvider = ({ children }) => {
         }
     }
 
-    const updateRating = async (id, rating) => {
+    const updateRating = async (id, rating, userId) => {
         const resultAPI =  await movieService.updateRating(id, {rating});
         if (resultAPI.success){
-            getMovies();
+            getMovies(userId);
         }
     }
 

@@ -4,13 +4,15 @@ export default class MoviesService {
     constructor(){
         let service = axios.create({
             baseURL: "http://localhost:5005/movie",
+            withCredentials: "true"
         })
 
         this.service = service;
     }
 
-    getMovies() {
-        return this.service.get("/").then((resp) => {
+    getMovies(userId) {
+        console.log("userId Service:", userId);
+        return this.service.get(`/${userId}`).then((resp) => {
             console.log(resp.data);
             return resp.data;
         })
@@ -32,7 +34,7 @@ export default class MoviesService {
     }
 
     getMovie(id){
-        return this.service.get(`/${id}`).then((resp) => {
+        return this.service.get(`/details/${id}`).then((resp) => {
             console.log(resp.data);
             return resp.data;
         })

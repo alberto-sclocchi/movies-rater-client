@@ -2,14 +2,16 @@ import React, { useContext, useEffect } from 'react'
 import SearchMoviesBar from './SearchMoviesBar'
 import MoviesContext from './context/MoviesContext.context';
 import { RenderType } from './models/RenderType.model'; 
+import AuthContext from '../auth/context/AuthContext.context';
 
 export default function MoviesDashboard() {
 
   const { addedMovies, renderMovies, getMovies} = useContext(MoviesContext)
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    getMovies();
-  }, []);
+    getMovies(user._id);
+  }, [user]);
 
 
   return (

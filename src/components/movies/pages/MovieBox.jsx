@@ -2,14 +2,15 @@ import React, { useContext, useState } from 'react'
 import MoviesContext from '../context/MoviesContext.context';
 import { RenderType } from '../models/RenderType.model.js'; 
 import { Link } from 'react-router-dom';
+import AuthContext from '../../auth/context/AuthContext.context.jsx';
 
 export default function SearchedMovieBox(props) {
   
   const {id, title, releaseYear, overview, cast, renderType, directors, index} = props.movie;
-  const { addedMovies, unaddMovie } = useContext(MoviesContext);
+  const { addedMovies, unaddMovie, addMovie, updateRating } = useContext(MoviesContext);
+  const { user } = useContext(AuthContext);
 
   const isAlreadyAdded = addedMovies.some((movie) => movie.movieId === id);
-  const { addMovie, updateRating } = useContext(MoviesContext);
 
   const [showRatingInput, setShowRatingInput] = useState(false);
   const [newRating, setNewRating] = useState();
@@ -21,7 +22,7 @@ export default function SearchedMovieBox(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateRating(props.movie._id, newRating);
+    updateRating(props.movie._id, newRating, user._id);
     
     setTimeout(() => setShowRatingInput(false), 10);
   } 
@@ -41,7 +42,7 @@ export default function SearchedMovieBox(props) {
             isAlreadyAdded
             ? <p>Already Added</p>
             : renderType === RenderType.searchedMovie 
-            ? <button onClick={() => addMovie({movieId: id, title, releaseYear, verticalPoster: props.movie.imageSet.verticalPoster.w720, overview, cast, directors})} className='plus-button'>+</button> 
+            ? <button onClick={() => addMovie({movieId: id, title, releaseYear, verticalPoster: props.movie.imageSet.verticalPoster.w720, overview, cast, directors, user: user._id})} className='plus-button'>+</button> 
             : renderType === RenderType.addedMovie 
             ? <button onClick={() => unaddMovie(props.movie._id)} className={'minus-button'}>-</button>
             : <p>?</p>
