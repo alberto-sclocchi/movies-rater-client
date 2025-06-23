@@ -3,10 +3,11 @@ import AuthContext from './context/AuthContext.context';
 
 export default function SignUpPage() {
 
-  const { errorMessage, signUp, setErrorMessage } = useContext(AuthContext);
+  const { errorMessage, signUp, setErrorMessage, isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
       setErrorMessage((prevState) => !!prevState ? null : prevState);
+      isLoggedIn();
   }, [])
   
   const [ formData, setFormData ] = useState({

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function LogInPage() {
 
-  const { errorMessage, logIn, setErrorMessage } = useContext(AuthContext);
+  const { errorMessage, logIn, setErrorMessage, isLoggedIn } = useContext(AuthContext);
   const [ formData, setFormData ]= useState({
     email: "",
     password: ""
@@ -12,6 +12,7 @@ export default function LogInPage() {
 
   useEffect(() => {
     setErrorMessage((prevState) => !!prevState ? null : prevState);
+    isLoggedIn();
   }, [])
 
   const handleChange = (event) => {

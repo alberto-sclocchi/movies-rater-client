@@ -70,8 +70,16 @@ export const AuthProvider = ({children}) => {
         }, 7500)
     }
 
+    const isLoggedIn = async () => {
+        const currentUser = await service.getCurrentUser();
+        if(currentUser){
+            navigateTo("/dashboard");
+        }
+    }
+
+
     return(
-        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage, setCurrentUser, logOut, isLoggedOut}}>
+        <AuthContext.Provider value={{errorMessage, user, signUp, logIn, setErrorMessage, setCurrentUser, logOut, isLoggedOut, isLoggedIn}}>
             {children}
         </AuthContext.Provider>
     )
