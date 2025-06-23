@@ -12,7 +12,6 @@ export default function HomePage() {
   
   return (
     <div id="home-page">
-      {!!errorMessage && errorMessage}
       <div className='home-page-div primary-home-page-div'>
         <p>Discover new movies, rate your favorites, and get personalized recommendations from ReelBot.</p>
         {!user ? <Link to="/signup" id="signup-home-page">Start exploring now!</Link> : <Link to="/dashboard" id="signup-home-page">Explore movies!</Link>}

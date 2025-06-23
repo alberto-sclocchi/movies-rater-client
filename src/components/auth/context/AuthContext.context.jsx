@@ -36,7 +36,7 @@ export const AuthProvider = ({children}) => {
             const currentUser = await service.getCurrentUser();
             setUser(currentUser);
 			setErrorMessage(null);
-			navigateTo("/");
+			navigateTo("/dashboard");
 		} else{
 			setErrorMessage(userResp.message);
 		}
@@ -55,9 +55,11 @@ export const AuthProvider = ({children}) => {
 		}, 50)
     }
 
-    const isLoggedOut = () => {
-        if(!user){
-            navigateTo("/");
+    const isLoggedOut = async () => {
+        
+        const currentUser = await service.getCurrentUser();
+        if(!currentUser){
+            navigateTo("/login");
             setTimeout(() => {
                 setErrorMessage("Please log in to continue.");      
             }, 50) 
