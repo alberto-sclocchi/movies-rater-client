@@ -4,7 +4,7 @@ export default class MoviesService {
     constructor(){
         let service = axios.create({
             // baseURL: "http://localhost:5005/movie",
-            baseURL:"https://movies-rater-api.onrender.com",
+            baseURL:"https://movies-rater-api.onrender.com/movie",
             withCredentials: "true"
         })
 

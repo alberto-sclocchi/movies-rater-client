@@ -3,7 +3,8 @@ import axios from 'axios'
 export default class AuthService {
     constructor(){
         let service = axios.create({
-            baseURL: "http://localhost:5005/auth",
+            // baseURL: "http://localhost:5005/auth",
+            baseURL:"https://movies-rater-api.onrender.com/auth",
             withCredentials: "true"
         })
 
