@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import botIcon from '../../images/BotIcon.png';
 import ReelBotContext from './context/ReelBotContext.context';
 import MoviesContext from '../movies/context/MoviesContext.context';
-import { RenderType } from '../movies/models/RenderType.model';
 import Markdown from 'react-markdown';
 import AuthContext from '../auth/context/AuthContext.context';
 
@@ -19,10 +18,8 @@ export default function ReelBotPage() {
     // console.log("Added Movies in order: ", addedMovies);
   }, [])
 
-
   useEffect(() => {
     if(!reelBotLoading && botResponse) {
-        setDisplayText("");
         let index = 0;
         const interval = setInterval(() => {
             if (index < botResponse.length) {
@@ -36,7 +33,7 @@ export default function ReelBotPage() {
         return () => {
             clearInterval(interval)
             setDisplayText(""); 
-            setBotResponse("");
+            setBotResponse(""); 
         };
     }
   }, [botResponse, reelBotLoading]);

@@ -38,7 +38,7 @@ export default function LogInPage() {
                 <label>Password</label>
                 <input type="password" name="password" value={formData.password} onChange={handleChange}/>
             </div>
-            <button>Sign Up</button>
+            <button>Log In</button>
         </form>
         <p>Don't have an account? <Link to="/signup" style={{color:"rgb(251, 75, 16)", textDecoration: "none"}}>[Sign up here]</Link></p>
     </div>
