@@ -14,20 +14,66 @@ export default function NavBar() {
   }
 
   return (
-    <nav id="navbar">
-        <Link to="/" className="logo-link" onClick={() => setActiveIndex(null)}><img src={logoIcon} alt="rateflix-logo"/></Link>
-        {!!user ?
-          <div>
-            <Link to="/dashboard" className={`navbar-link ${activeIndex === 1  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(1)}>Movies</Link>
-            <Link to="/reelbot" className={`navbar-link ${activeIndex === 2  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(2)}>ReelBot</Link>
-            <button type='submit' onClick={() => logOutFun()} id="logout-button">Log Out</button>
-          </div>
-          :
-          <div>
-            <Link to="/login" className={`navbar-link ${activeIndex === 3  ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(3)}>Log in</Link>
-            <Link to="/signup" className={`navbar-link ${activeIndex === 4 ? "navbar-link-active" : ""}`}  onClick={() => setActiveIndex(4)}>Sign up</Link>
-          </div>
-        }
-    </nav>
+   <nav className="w-full px-6 py-4 flex items-center justify-between bg-white text-lg">
+    <Link to="/" onClick={() => setActiveIndex(null)}>
+      <img src={logoIcon} alt="rateflix-logo" className="h-20 w-auto scale-125 hover:scale-150 transition-transform ease-in-out duration-300"/>
+    </Link>
+
+    {/* Links */}
+    <div className="flex items-center gap-6">
+      {user ? (
+        <>
+          <Link 
+            to="/dashboard" 
+            className={`text-gray-700 hover:text-red-600 font-medium transition-colors ${
+              activeIndex === 1 ? "text-red-600 underline" : ""
+            }`}
+            onClick={() => setActiveIndex(1)}
+          >
+            Movies
+          </Link>
+
+          <Link 
+            to="/reelbot" 
+            className={`text-gray-700 hover:text-red-600 font-medium transition-colors ${
+              activeIndex === 2 ? "text-red-600 underline" : ""
+            }`}
+            onClick={() => setActiveIndex(2)}
+          >
+            ReelBot
+          </Link>
+
+          <button 
+            onClick={logOutFun} 
+            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors font-semibold"
+          >
+            Log Out
+          </button>
+        </>
+      ) : (
+        <>
+          <Link 
+            to="/login" 
+            className={`text-gray-700 hover:text-red-600 font-medium transition-colors ${
+              activeIndex === 3 ? "text-red-600 underline" : ""
+            }`}
+            onClick={() => setActiveIndex(3)}
+          >
+            Log in
+          </Link>
+
+          <Link 
+            to="/signup" 
+            className={`px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors font-semibold ${
+              activeIndex === 4 ? "ring-2 ring-red-400" : ""
+            }`}
+            onClick={() => setActiveIndex(4)}
+          >
+            Sign up
+          </Link>
+        </>
+      )}
+    </div>
+  </nav>
   )
 }

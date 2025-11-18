@@ -37,7 +37,7 @@ export default function SearchedMovieBox(props) {
      <div className={renderType === RenderType.addedMovie ? 'searched-movie added-movie' : 'searched-movie'}>
         <div className='movie-box-buttons'>
           {renderType === RenderType.addedMovie  && <Link to={`/movie/${props.movie._id}`} className='movie-details-link'>i</Link>}
-          {renderType === RenderType.addedMovie  && <span className="index-span" style={{backgroundColor : index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "#cd7f32" : "rgb(251, 75, 16)"}}>{index + 1}</span>}
+          {renderType === RenderType.addedMovie  && <span className="index-span" style={{backgroundColor : index === 0 ? "gold" : index === 1 ? "silver" : index === 2 ? "#cd7f32" : "rgb(220, 38, 38)"}}>{index + 1}</span>}
           {
             isAlreadyAdded
             ? <p>Already Added</p>

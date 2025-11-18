@@ -2,12 +2,12 @@
 
 .App {
   text-align: center;
-  background-color: whitesmoke;
   font-family: 'Bebas Neue';
   letter-spacing: 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  --orange-color:rgb(254, 215, 170)
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -15,81 +15,6 @@
     animation: none !important;
     transition: none !important
   }
-}
-
-#navbar{
-  position: relative;
-  top: 0;
-  left: 0;
-  padding: 2vw 0;
-  width: 85%;
-  height: 5vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#navbar div{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 2vw;
-}
-
-.navbar-link{
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding: 10px;
-  cursor: pointer;
-  color: black;
-  transition: background-size 0.5s ease-out, color 0.6s ease-out;
-  font-size: 1.4rem;
-  background-repeat: no-repeat;
-  width: 10vw;
-  border-radius: 50px;
-  background: linear-gradient(90deg, rgb(251, 75, 16));
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: none;
-}
-
-.navbar-link:hover, 
-.navbar-link-active{
-  color: whitesmoke;
-  background-size: 100% 100%;
-}
-
-#logout-button{
-  font-family: 'Bebas Neue';
-  text-decoration: none;
-  font-size: 1.4rem;
-  padding: 10px;
-  cursor: pointer;
-  width: 10vw;
-  border-radius: 50px;
-  border: none;
-  background-color: rgb(251, 75, 16);
-  color: whitesmoke;
-  box-shadow: 0 0 7.5px rgb(251, 75, 16);
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-#logout-button:hover{
-  background-color: whitesmoke;
-  color: rgb(251, 75, 16);
-}
-
-.logo-link img{
-  width: 5vw;
-  height: auto;
-  transition: transform 0.4s ease-out;
-}
-
-.logo-link img:hover{
-  transform: scale(1.2);
 }
 
 .movies-dashboard{
@@ -120,6 +45,7 @@
   flex-wrap: nowrap;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 3vw;
+  background-color: white;
 }
 
 .search-bar img{
@@ -138,7 +64,7 @@
   display: flex;
   align-items: center;
   padding: 0.5vw 1.5vw;
-  background-color:  rgb(251, 75, 16);
+  background-color: rgb(220, 38, 38);
 }
 
 .search-bar button:hover img{
@@ -164,7 +90,8 @@
   justify-content: space-between;
   padding: 2vw 2.2vw;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 15px rgb(220, 38, 38, 0.4);
+  background-color: white;
 }
 
 .added-movie{
@@ -185,8 +112,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: rgb(251, 75, 16);
-  box-shadow: 0 0 6px rgb(251, 75, 16);
+  background-color: var(--orange-color);
+  box-shadow: 0 0 6px var(--orange-color);
   border-radius: 10px;
   font-size: 1.5rem;
   margin: 1.5vw 0;
@@ -207,7 +134,7 @@
 }
 
 .searched-movies{
-  background-color: whitesmoke;
+  background-color: white;
   position: absolute;
   z-index: 10000;
   top: 100%;
@@ -296,11 +223,12 @@
 
 #movie-details-info-page h1{
   font-size: 1.75rem;
-  color: whitesmoke;
-  box-shadow: 0px 0px 7px rgb(251, 75, 16);
-  background-color: rgb(251, 75, 16);
+  color: black;
+  box-shadow: 0px 0px 7px var(--orange-color);
+  background-color: var(--orange-color);
   padding: 1vw 2vw; 
   border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .movie-details-info-container{
@@ -329,7 +257,7 @@
   width: 20vw;
   max-height: 30vw;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgb(251, 75, 16);
+  box-shadow: 0px 0px 10px var(--orange-color);
   animation: fadeInImg 1s ease-out;
 }
 
@@ -378,7 +306,7 @@
 .movie-details-info-box h3{
   font-size: 1.4rem;
   margin-bottom: 1vw;
-  border-bottom: 3px solid rgb(251, 75, 16);
+  border-bottom: 3px solid var(--orange-color);
 }
 
 .movie-details-info-box p,
@@ -480,30 +408,25 @@
   align-items: center;
   justify-content: center;
   padding: 0.75vw 3vw;
-  background-color: rgb(251, 75, 16);
+  background-color: var(--orange-color);
   font-size: 1.4rem;
   border-radius: 50px;
-  color: whitesmoke;
+  color: black;
   transition: border 0.1s ease, color 0.3s ease, background-color 0.3s ease;
   font-family: 'Bebas Neue';
 }
 
 #reelbot-page form button:hover{
-  border: 2px solid rgb(251, 75, 16);
-  color: rgb(251, 75, 16);
+  border: 2px solid var(--orange-color);
+  color: var(--orange-color);
   background-color: whitesmoke;
 }
-
-/* #loading-spinner{
-  width: 7.5vw;
-  height: auto;
-} */
 
 #loading-spinner{
   width: 3vw;
   height: 3vw;
   border: 0.5vw solid rgba(251, 75, 16, 0.2);
-  border-top: 0.5vw solid rgb(251, 75, 16);
+  border-top: 0.5vw solid var(--orange-color);
   border-radius: 50%;
   animation: spin 1s linear infinite; 
 }
@@ -518,10 +441,12 @@
 }
 
 .signup-page{
-  height: 85vh;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  align-items: center;
 }
 
 .signup-page-form{
@@ -561,21 +486,21 @@
 .signup-page-form button{
   font-family: 'Bebas Neue';
   font-size: 1.4rem;
-  color: whitesmoke;
+  color: black;
   margin: 1vw;
   border: none;
   width: 40%;
   height: 2.5vw;
   border-radius: 5px;
-  background-color: rgb(251, 75, 16);
+  background-color: var(--orange-color);
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .signup-page-form button:hover{
   background-color: white;
-  color: rgb(251, 75, 16);
-  border: 2px solid rgb(251, 75, 16);
+  color: var(--orange-color);
+  border: 2px solid var(--orange-color);
 }
 
 .error-message-div{
@@ -584,7 +509,7 @@
 }
 
 .error-message{
-  color: rgb(251, 75, 16);  
+  color: rgb(220, 38, 38);  
   font-size: 1.2rem;
   animation: fadeIn 0.5s ease-out forwards;
   text-decoration: underline;
@@ -601,99 +526,5 @@
   }
 }
 
-#home-page{
-  background: url("./images/HomePage.png");
-  background-size: cover;
-  width: 100vw;
-  height: 85vh;
-  background-position: center;  
-  background-repeat: no-repeat;
-  animation: pictureAnimation 1.5s forwards;
-  border: 5px solid #d92220;
-}
 
-@keyframes pictureAnimation {
-  0%{
-    opacity: 0.9;
-  }
-  100%{
-    opacity: 1;
-  }
-}
 
-.home-page-div{
-  position: relative;
-  background-color: #d92220;
-  box-shadow: 0 0 5px whitesmoke;
-  border: 1px solid whitesmoke;
-  border-radius: 10px;
-  width: 30vw;
-  padding: 2vw;
-  margin: 2vw 4vw;
-  font-size: 1.3rem;
-  color: whitesmoke;
-  animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
-  list-style: none;
-}
-
-.primary-home-page-div{
-  left: 60%;
-  top: 7.5%;
-  transition: scale 0.3s ease-in-out;
-}
-
-.home-page-div li{
-  list-style: none;
-}
-
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.95) translateY(30px);
-    filter: blur(2px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
-  }
-}
-
-#signup-home-page{
-  background-color: whitesmoke;
-  color: #d92220;
-  padding: 0.2vw 1vw;
-  text-decoration: none;
-  border-radius: 10px;
-  opacity: 0.95;
-  display: inline-block;
-  transition: 0.3s ease-in-out;
-  font-size: 1.5rem;
-}
-
-#signup-home-page:hover{
-  opacity: 1;
-  box-shadow: 0 0 10px whitesmoke;
-}
-
-.secondary-home-page-div{
-  width: 25vw;
-  transition: scale 0.3s ease-in-out;
-}
-
-.popcorn-div{
-  position: relative;
-  left: 67.5%;
-  bottom: 25%;
-  width: 20vw;
-  margin: 2vw 4vw;
-}
-
-.popcorn-div img{
-  width: 15vw
-}
-
-.primary-home-page-div:hover,
-.secondary-home-page-div:hover{
-  scale:1.1;
-}

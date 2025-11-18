@@ -68,7 +68,6 @@ export default function ReelBotPage() {
 
   return (
     <div id="reelbot-page">
-     <h1>ReelBot <img src={botIcon} alt="chat-bot-icon"/></h1>
      <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Ask ReelBot...' onChange={handleChange} value={input}/>
         <div className='reelbot-response'>

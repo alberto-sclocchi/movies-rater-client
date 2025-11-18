@@ -40,7 +40,7 @@ export default function LogInPage() {
             </div>
             <button>Log In</button>
         </form>
-        <p>Don't have an account? <Link to="/signup" style={{color:"rgb(251, 75, 16)", textDecoration: "none"}}>[Sign up here]</Link></p>
+        <p>Don't have an account? <Link to="/signup" style={{color:"rgb(220, 38, 38)", textDecoration: "none"}}>[Sign up here]</Link></p>
     </div>
   )
 }

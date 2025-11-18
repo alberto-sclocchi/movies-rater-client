@@ -17,7 +17,6 @@ export default function MoviesDashboard() {
 
   return (
     <div className='movies-dashboard'>
-        <h1>Movies Dashboard</h1>
         <SearchMoviesBar />
         <div className='added-movies'>
           {addedMovies.length ? renderMovies(RenderType.addedMovie) : <h2>No Movies Added </h2>}
