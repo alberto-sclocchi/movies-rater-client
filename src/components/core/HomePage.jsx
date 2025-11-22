@@ -97,8 +97,8 @@ export default function HomePage() {
 
                 <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
                   <h3 className="font-semibold text-gray-800">Discover New Movies</h3>
-                  <p className="mt-2 text-sm text-gray-600">Get personalized recommendations based on your ratings. The more you rate, the smarter ReelBot becomes.</p>
-                  <button className="mt-4 px-4 py-2 rounded-md bg-red-600 text-white text-sm box-border font-semibold border-[1px] border-transparent hover:bg-gray-50 hover:border-red-600 hover:text-gray-800 transition-colors duration-300 ease-in-out">Start exploring</button>
+                  <p className="mt-2 mb-5 text-sm text-gray-600">Get personalized recommendations based on your ratings. The more you rate, the smarter ReelBot becomes.</p>
+                  <Link to="/signup" className="px-4 py-2 rounded-md bg-red-600 text-white text-sm box-border font-semibold border-[1px] border-transparent hover:bg-gray-50 hover:border-red-600 hover:text-gray-800 transition-colors duration-300 ease-in-out">Start exploring</Link>
                 </div>
               </div>
             </div>
@@ -150,16 +150,16 @@ export default function HomePage() {
               <p className="mt-3 text-gray-600">A clean dashboard shows your average rating, recently added movies, and personalized picks. Built with MERN and OpenAI.</p>
 
               <div className="mt-6 flex gap-3 justify-center">
-                <button className="px-5 py-2 rounded-lg bg-red-600 text-white font-semibold 
+                <Link to="/signup" className="px-5 py-2 rounded-lg bg-red-600 text-white font-semibold 
                      hover:bg-transparent hover:text-gray-800 hover:border hover:border-gray-200 
                      transition-colors duration-500 ease-in-out">
                   Try demo
-                </button>
-                <button className="px-5 py-2 rounded-lg border border-gray-200 text-gray-800 font-semibold 
+                </Link>
+                <Link to="https://github.com/alberto-sclocchi/movies-rater-client" target='_blank' className="px-5 py-2 rounded-lg border border-gray-200 text-gray-800 font-semibold 
                                   hover:bg-red-600 hover:text-white 
                                   transition-colors duration-500 ease-in-out">
                   View on GitHub
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -207,16 +207,16 @@ export default function HomePage() {
               <p className="mt-2 text-red-100/90">Create your free account and get personalized picks from ReelBot.</p>
             </div>
             <div className="flex gap-3">
-              <button className="px-6 py-3 rounded-md bg-white text-red-600 font-semibold border border-transparent 
+              <Link to="signup" className="px-6 py-3 rounded-md bg-white text-red-600 font-semibold border border-transparent 
                      hover:bg-transparent hover:text-white hover:border-white/30 
                      transition-colors duration-500 ease-in-out">
                 Get started — it's free
-              </button>
-              <button className="px-6 py-3 rounded-md bg-transparent text-white border border-white/30 
+              </Link>
+              <Link to="signup" className="px-6 py-3 rounded-md bg-transparent text-white border border-white/30 
                      hover:bg-white hover:text-red-600 
                      transition-colors duration-500 ease-in-out">
                 See demo
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -226,9 +226,9 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-600">
             <div>Built by <span className="font-semibold">Alberto Sclocchi</span> © {new Date().getFullYear()}</div>
             <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-gray-900">GitHub</a>
-              <a href="#" className="hover:text-gray-900">LinkedIn</a>
-              <a href="#" className="hover:text-gray-900">Contact</a>
+              <Link to="https://github.com/alberto-sclocchi/movies-rater-client" target='_blank' className="hover:text-gray-900">GitHub</Link>
+              <Link to="https://www.linkedin.com/in/alberto-sclocchi/" target='_blank' className="hover:text-gray-900">LinkedIn</Link>
+              <Link to="mailto:albe.sclocchi@gmail.com" className="hover:text-gray-900">Email</Link>
             </div>
           </div>
         </footer>
